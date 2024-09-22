@@ -1,8 +1,8 @@
-.registerContent {
+.loginContent {
   margin: 2rem;
 }
 
-.registerForm {
+.loginForm {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,12 +11,6 @@
   border-radius: 10px;
   padding: 1rem 2rem;
   color: #555;
-}
-
-.inputRadioGroup {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
 }
 
 .buttonGroup {
