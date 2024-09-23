@@ -7,13 +7,11 @@ const Login = () => {
   return (
     <main className={styles.loginContent}>
       <form className={styles.loginForm}>
-        <div>
-          <Title title="ログイン" />
-          <div className={styles.formSelection}>
-            <InputText name="email" label="メールアドレス" type="text" />
-            <InputText name="password" label="パスワード" type="password" />
-            <div className={styles.buttonGroup}>
-              <Button type="button" label="ログイン" variant="primary" />
+        <Title title="ログイン" />
+        <InputText name="email" label="メールアドレス" type="text" />
+        <InputText name="password" label="パスワード" type="password" />
+        <div className={styles.buttonGroup}>
+          <Button type="button" label="ログイン" variant="primary" />
           <Button type="button" label="戻る" variant="secondary" />
         </div>
       </form>
