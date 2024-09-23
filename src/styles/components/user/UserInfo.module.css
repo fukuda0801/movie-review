@@ -1,0 +1,8 @@
+.infoGroup {
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.infoGroup > p:first-child {
+  font-weight: 700;
+}
