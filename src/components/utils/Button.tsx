@@ -4,7 +4,6 @@ type ButtonProps = {
   type: "submit" | "reset" | "button" | undefined;
   label: string;
   variant: "" | "primary" | "secondary";
-  className?: string;
   handleClick?: () => void;
 };
 
