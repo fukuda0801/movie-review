@@ -12,7 +12,15 @@
   color: white;
 }
 
+.primary:hover {
+  background-color: #ffc58b;
+}
+
 .secondary {
-  background-color: gray;
+  background-color: #dbdbdb;
   color: black;
+}
+
+.secondary:hover {
+  background-color: #e9e9e9;
 }

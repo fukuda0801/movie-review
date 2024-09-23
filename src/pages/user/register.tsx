@@ -25,8 +25,7 @@ const Register = () => {
           </div>
           <div className={styles.buttonGroup}>
             <Button type="button" label="登録" variant="primary" />
-            <Button type="button" label="戻る" variant="" />
-          </div>
+          <Button type="button" label="戻る" variant="secondary" />
         </div>
       </form>
     </main>

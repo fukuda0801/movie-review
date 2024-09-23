@@ -14,9 +14,7 @@ const Login = () => {
             <InputText name="password" label="パスワード" type="password" />
             <div className={styles.buttonGroup}>
               <Button type="button" label="ログイン" variant="primary" />
-              <Button type="button" label="戻る" variant="" />
-            </div>
-          </div>
+          <Button type="button" label="戻る" variant="secondary" />
         </div>
       </form>
     </main>
