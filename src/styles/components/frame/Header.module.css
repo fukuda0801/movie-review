@@ -1,0 +1,17 @@
+.headerGroup {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border-bottom: double 5px #555;
+}
+
+.headerGroup h2 {
+  margin: 1rem 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.headerButtonGroup {
+  display: flex;
+  gap: 1rem;
+}
