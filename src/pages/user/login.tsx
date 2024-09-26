@@ -5,6 +5,7 @@ import Button from "@/components/utils/Button";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema } from "@/lib/validation";
+import { useRouter } from "next/router";
 
 type LoginProps = {
   email: string;
@@ -18,10 +19,11 @@ const Login = () => {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<LoginProps>({ resolver: zodResolver(loginSchema) });
+  // ログイン後にトップページへ遷移
+  const router = useRouter();
 
   // ログイン処理
-  const onSubmit = (data: LoginProps) => {
-    console.log("ログイン情報が送信されました", data);
+      router.push("/");
   };
   return (
     <main className={styles.loginContent}>
