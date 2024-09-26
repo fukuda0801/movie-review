@@ -5,12 +5,13 @@ type ButtonProps = {
   label: string;
   variant: "" | "primary" | "secondary";
   handleClick?: () => void;
+  disabled?: boolean;
 };
 
-const Button = ({ type, label, handleClick, variant }: ButtonProps) => {
+const Button = ({ type, label, handleClick, variant, disabled }: ButtonProps) => {
   const className = `${styles.button} ${styles[variant]}`;
   return (
-    <button type={type} onClick={handleClick} className={className}>
+    <button type={type} onClick={handleClick} className={className} disabled={disabled}>
       {label}
     </button>
   );
