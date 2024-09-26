@@ -6,6 +6,7 @@ import Button from "@/components/utils/Button";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema } from "@/lib/validation";
+import { useRouter } from "next/router";
 
 type RegisterProps = {
   name: string;
@@ -25,6 +26,8 @@ const Register = () => {
   } = useForm<RegisterProps>({
     resolver: zodResolver(registerSchema),
   });
+  // useRouterでルーティング管理
+  const router = useRouter();
 
   // 新規登録処理
   const onSubmit = (data: RegisterProps) => {
