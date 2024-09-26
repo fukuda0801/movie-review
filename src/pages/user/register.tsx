@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema } from "@/lib/validation";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 type RegisterProps = {
   name: string;
@@ -26,18 +27,48 @@ const Register = () => {
   } = useForm<RegisterProps>({
     resolver: zodResolver(registerSchema),
   });
+
+  // サーバーエラーをuseStateで管理
+  const [serverError, setServerError] = useState<string | null>(null);
+
   // useRouterでルーティング管理
   const router = useRouter();
 
   // 新規登録処理
-  const onSubmit = (data: RegisterProps) => {
-    console.log("フォームが送信されました", data);
+  const onSubmit = async (data: RegisterProps) => {
+    try {
+      const response = await fetch("/api/user/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          gender: data.gender,
+          age: data.age,
+          password: data.password,
+          confirmedPassword: data.confirmedPassword,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.message || "ユーザーの登録に失敗しました");
+      }
+
+      alert("ユーザー登録に成功しました。");
+      router.push("/");
+    } catch (err: any) {
+      setServerError(err.message || "サーバーエラーが発生しました");
+    }
   };
 
   return (
     <main className={styles.registerContent}>
       <form className={styles.registerForm} onSubmit={handleSubmit(onSubmit)}>
         <Title title="アカウント登録" />
+        {serverError && <p className={styles.errorMessage}>{serverError}</p>}
         <InputText
           name="name"
           label="ユーザー名"
