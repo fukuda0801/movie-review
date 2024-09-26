@@ -58,7 +58,7 @@ const Register = () => {
       }
 
       alert("ユーザー登録に成功しました。");
-      router.push("/");
+      router.push("/user/login");
     } catch (err: any) {
       setServerError(err.message || "サーバーエラーが発生しました");
     }
