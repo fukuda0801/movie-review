@@ -1,8 +1,8 @@
-.registerContent {
+.userInfoContent {
   margin: 2rem;
 }
 
-.registerForm {
+.userInfo {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,18 +13,7 @@
   color: #555;
 }
 
-.inputRadioContent {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-}
-
 .buttonGroup {
   display: flex;
   justify-content: space-around;
-}
-
-.errorMessage {
-  color: red;
-  font-size: 0.8rem;
 }

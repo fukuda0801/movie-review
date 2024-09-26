@@ -1,0 +1,111 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                 Int  @id @default(autoincrement())
+  name               String
+  email              String  @unique
+  password           String
+  age                Int
+  gender             String
+  createdAt          DateTime  @default(now()) @map(name: "created_at")
+  updatedAt          DateTime  @updatedAt @map(name: "updated_at")
+
+  favorite_Movies    Favorite_Movie[]
+  review             Review[]
+  user_genre         User_Genre[]
+  good               Good[]
+  followers          User_Follow[] @relation("follower")
+  following          User_Follow[] @relation("followed")
+}
+
+model User_Follow {
+  id                 Int  @id @default(autoincrement())
+  followed_id        Int
+  follow_id          Int
+  createdAt          DateTime  @default(now()) @map(name: "created_at")
+  updatedAt          DateTime  @updatedAt @map(name: "updated_at")
+
+  followed           User   @relation("followed", fields: [followed_id], references: [id])
+  follower           User   @relation("follower", fields: [follow_id], references: [id])
+
+  @@unique([followed_id, follow_id])
+}
+
+model Movie {
+  id                 Int  @id @default(autoincrement())
+  api_id             Int  @unique
+
+  favorite_Movies    Favorite_Movie[]
+  review             Review[]
+  genres             Movie_Genre[]
+}
+
+model Favorite_Movie {
+  id                 Int  @id @default(autoincrement())
+  user_id            Int
+  api_id             Int
+
+  user   User   @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  movie  Movie  @relation(fields: [api_id], references: [api_id], onDelete: Cascade)
+
+  @@unique([user_id, api_id])
+}
+
+model Review {
+  id                 Int  @id @default(autoincrement())
+  api_id           Int
+  user_id            Int
+  review             String
+  rating             Decimal  @db.Decimal(2, 1)
+  createdAt          DateTime  @default(now()) @map(name: "created_at")
+  updatedAt          DateTime  @updatedAt @map(name: "updated_at")
+
+  good               Good[]
+
+  user   User   @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  movie  Movie  @relation(fields: [api_id], references: [api_id], onDelete: Cascade) 
+}
+
+model Genre {
+  id                 Int  @id @default(autoincrement())
+  name               String @unique
+  api_id             Int @unique
+
+  movies             Movie_Genre[]
+  user_genres        User_Genre[]
+}
+
+model Movie_Genre {
+  api_id             Int
+  genre_id           Int
+
+  movie  Movie  @relation(fields: [api_id], references: [api_id], onDelete: Cascade)
+  genre  Genre  @relation(fields: [genre_id], references: [id], onDelete: Cascade)
+
+  @@id([api_id, genre_id])
+}
+
+model User_Genre {
+  id                 Int  @id @default(autoincrement())
+  user_id            Int
+  genre_id           Int
+
+  user   User  @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  genre  Genre @relation(fields: [genre_id], references: [id], onDelete: Cascade)
+}
+
+model Good {
+  id                 Int  @id @default(autoincrement())
+  user_id            Int
+  review_id          Int
+
+  user   User  @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  review Review @relation(fields: [review_id], references: [id], onDelete: Cascade)
+}

@@ -1,8 +1,8 @@
-.registerContent {
+.editContent {
   margin: 2rem;
 }
 
-.registerForm {
+.editForm {
   display: flex;
   flex-direction: column;
   justify-content: center;
