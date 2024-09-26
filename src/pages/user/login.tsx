@@ -22,13 +22,18 @@ const Login = () => {
   // ログイン後にトップページへ遷移
   const router = useRouter();
 
+  // サーバーエラーをuseStateで管理
+  const [serverError, setServerError] = useState<string | null>(null);
+
   // ログイン処理
       router.push("/");
+      setServerError(err.message || "サーバーエラーが発生しました");
   };
   return (
     <main className={styles.loginContent}>
       <form className={styles.loginForm} onSubmit={handleSubmit(onSubmit)}>
         <Title title="ログイン" />
+        {serverError && <p className={styles.errorMessage}>{serverError}</p>}
         <InputText
           name="email"
           label="メールアドレス"
