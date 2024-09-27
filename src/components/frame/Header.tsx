@@ -10,13 +10,6 @@ const ArchivoBlack = Archivo_Black({
   subsets: ["latin"],
 });
 
-type UserType = {
-  name: string;
-  email: string;
-  age: number;
-  gender: string;
-};
-
 const Header = () => {
   // useStateを用いてログイン
   const [login, setLogin] = useState<boolean | null>(null);
