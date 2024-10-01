@@ -4,6 +4,7 @@ import Title from "@/components/user/Title";
 import Button from "@/components/utils/Button";
 import { GetServerSideProps } from "next";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req } = context;
@@ -43,6 +44,36 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 const UserIndex = ({ user }: any) => {
+  // useRouterでルーティング管理
+  const router = useRouter();
+
+  // ユーザー退会処理
+  const deleteUser = async () => {
+    // 再確認
+    const confirmDelete = window.confirm("本当に退会しますか？");
+    if (!confirmDelete) {
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/user/delete", {
+        method: "DELETE",
+        credentials: "include",
+      });
+
+      if (!response.ok) {
+        alert("ユーザーの退会処理に失敗しました");
+        return;
+      }
+
+      alert("ユーザーの退会処理が完了しました");
+      router.push("/");
+    } catch (err) {
+      console.error("サーバーエラーが発生しました", err);
+      alert("サーバーエラーが発生しました");
+    }
+  };
+
   return (
     <main className={styles.userInfoContent}>
       <div className={styles.userInfo}>
@@ -55,9 +86,7 @@ const UserIndex = ({ user }: any) => {
           <Link href="/user/edit">
             <Button type="button" label="編集" variant="primary" />
           </Link>
-          <Link href="/">
-            <Button type="button" label="キャンセル" variant="secondary" />
-          </Link>
+          <Button type="button" label="退会" variant="secondary" handleClick={deleteUser} />
         </div>
       </div>
     </main>
