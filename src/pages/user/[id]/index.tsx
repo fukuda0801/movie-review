@@ -3,7 +3,7 @@ import styles from "../../../styles/pages/user/[id]/index.module.css";
 import Title from "@/components/user/Title";
 import Button from "@/components/utils/Button";
 import { GetServerSideProps } from "next";
-import prisma from "@/lib/prisma";
+import Link from "next/link";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req } = context;
@@ -43,7 +43,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 const UserIndex = ({ user }: any) => {
-  console.log(user);
   return (
     <main className={styles.userInfoContent}>
       <div className={styles.userInfo}>
@@ -53,8 +52,12 @@ const UserIndex = ({ user }: any) => {
         <UserInfo label="年齢" content={user.age} />
         <UserInfo label="性別" content={user.gender} />
         <div className={styles.buttonGroup}>
-          <Button type="button" label="編集" variant="primary" />
-          <Button type="button" label="戻る" variant="secondary" />
+          <Link href="/user/edit">
+            <Button type="button" label="編集" variant="primary" />
+          </Link>
+          <Link href="/">
+            <Button type="button" label="キャンセル" variant="secondary" />
+          </Link>
         </div>
       </div>
     </main>
