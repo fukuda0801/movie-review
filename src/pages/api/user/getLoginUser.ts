@@ -6,7 +6,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const SECRET_KEY = process.env.JWT_SECRET_KEY;
   // 秘密鍵がなかった場合401エラーを返す
   if (!SECRET_KEY) {
-    return res.status(401).json({ message: "権限がありません" });
+    return res.status(500).json({ message: "権限がありません" });
   }
 
   if (req.method === "GET") {
@@ -45,7 +45,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(500).json({ message: "サーバーエラー" });
     }
   } else {
-    res.setHeader("Allow", ["POST"]);
+    res.setHeader("Allow", ["GET"]);
     res.status(405).end(`${req.method}メソッドは使用できません`);
   }
 };
