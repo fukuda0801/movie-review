@@ -4,6 +4,7 @@ import { Archivo_Black } from "next/font/google";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
 
 const ArchivoBlack = Archivo_Black({
   weight: "400",
@@ -11,36 +12,8 @@ const ArchivoBlack = Archivo_Black({
 });
 
 const Header = () => {
-  // useStateを用いてログイン
-  const [login, setLogin] = useState<boolean | null>(null);
-  // useRouterを使用してログアウト後にトップページに遷移させる
+  const { login, setLogin } = useAuth(); // useAuthからログイン状態を取得
   const router = useRouter();
-
-  // ログイン状態確認し、ヘッダーのボタン表示を切り替え
-  const checkLogin = async () => {
-    const response = await fetch("/api/user/getLoginUser");
-    if (response.ok) {
-      setLogin(true);
-    } else {
-      setLogin(false);
-    }
-    console.log("Login status: ", response.ok);
-  };
-
-  // checkLoginを実行し、ヘッダーのボタン表示を切り替える
-  useEffect(() => {
-    const handleRouteChange = () => {
-      checkLogin(); // ページ遷移後にログイン状態を再確認
-    };
-
-    // ページ遷移時にログイン状態を確認
-    router.events.on("routeChangeComplete", handleRouteChange);
-
-    // クリーンアップ関数
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, [router.events]);
 
   // ログアウト処理
   const handleLogout = async () => {
@@ -50,8 +23,8 @@ const Header = () => {
 
     if (response.ok) {
       alert("ログアウトに成功しました");
+      setLogin(false);
       router.push("/");
-      checkLogin();
     } else {
       alert("ログアウトに失敗しました");
     }
