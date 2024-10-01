@@ -6,6 +6,8 @@ import Button from "@/components/utils/Button";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { editSchema } from "@/lib/validation";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 type EditProps = {
   name: string;
@@ -23,9 +25,34 @@ const Edit = () => {
     resolver: zodResolver(editSchema),
   });
 
+  // useRouterでルーティング管理
+  const router = useRouter();
+
   // ユーザー情報編集処理
-  const onSubmit = (data: EditProps) => {
-    console.log("ユーザー編集情報が送信されました", data);
+  const onSubmit = async (data: EditProps) => {
+    try {
+      const response = await fetch("/api/user/edit", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: data.name,
+          gender: data.gender,
+          age: data.age,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.message || "ユーザー情報の編集に失敗しました");
+      }
+      const editedUser = await response.json();
+      alert("ユーザー情報の編集に成功しました");
+      router.push(`/user/${editedUser.user.id}`);
+    } catch (err: any) {
+      console.error(err.message || "サーバーエラーが発生しました");
+    }
   };
 
   return (
@@ -59,7 +86,9 @@ const Edit = () => {
         />
         <div className={styles.buttonGroup}>
           <Button type="submit" label="送信" variant="primary" />
-          <Button type="button" label="キャンセル" variant="secondary" />
+          <Link href="/">
+            <Button type="button" label="キャンセル" variant="secondary" />
+          </Link>
         </div>
       </form>
     </main>
