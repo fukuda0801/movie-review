@@ -3,7 +3,7 @@ import styles from "../../styles/components/utils/Button.module.css";
 type ButtonProps = {
   type: "submit" | "reset" | "button" | undefined;
   label: string;
-  variant: "" | "primary" | "secondary";
+  variant: "" | "primary" | "secondary" | "third";
   handleClick?: () => void;
   disabled?: boolean;
 };

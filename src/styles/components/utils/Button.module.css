@@ -24,3 +24,12 @@
 .secondary:hover {
   background-color: #e9e9e9;
 }
+
+.third {
+  background-color: black;
+  color: white;
+}
+
+.third:hover {
+  background-color: rgb(35, 35, 35);
+}

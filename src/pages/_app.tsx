@@ -10,7 +10,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <AuthProvider>
         <Header />
         <Component {...pageProps} />
-        <Footer />
+        {/* <Footer /> */}
       </AuthProvider>
     </>
   );

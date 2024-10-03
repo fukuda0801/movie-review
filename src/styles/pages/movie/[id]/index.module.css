@@ -1,0 +1,24 @@
+.searchForm {
+  background-color: #f1f1f1;
+  padding: 0.5rem 1rem;
+}
+
+.searchFormContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.searchFormContent > input {
+  border-radius: 10px;
+  border: 2px solid rgb(255, 198, 92);
+  width: 80%;
+  height: 2rem;
+  margin-right: 1rem;
+  padding: 0.3rem 0.6rem;
+  color: #666;
+}
+
+.searchFormContent > input:focus {
+  border: 2px solid green;
+}
