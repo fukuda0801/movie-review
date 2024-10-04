@@ -1,0 +1,42 @@
+.sliderMovieContent {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  color: #555;
+}
+
+.sliderMovieContent > h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 1rem;
+  background-color: #e4e4e4;
+  color: black;
+  padding: 0.7rem;
+}
+
+.sliderArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+}
+
+.sliderArea {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slick-slide {
+  padding: 10px;
+}
+
+.sliderMovieImg {
+  margin-bottom: 10px;
+}
+
+.sliderArea > p {
+  max-width: 140px;
+  text-align: center;
+}
