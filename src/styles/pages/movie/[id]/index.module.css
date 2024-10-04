@@ -1,0 +1,33 @@
+.searchForm {
+  padding: 0.5rem 1rem;
+}
+
+.searchForm > h2 {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1rem;
+  background-color: #e4e4e4;
+  color: black;
+  padding: 0.7rem;
+}
+
+.searchFormContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.searchFormContent > input {
+  border-radius: 10px;
+  border: 2px solid rgb(255, 198, 92);
+  width: 80%;
+  height: 2rem;
+  margin-right: 1rem;
+  padding: 0.3rem 0.6rem;
+  color: #666;
+}
+
+.searchFormContent > input:focus {
+  border: 2px solid green;
+}

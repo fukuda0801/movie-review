@@ -41,6 +41,7 @@ model User_Follow {
 model Movie {
   id                 Int  @id @default(autoincrement())
   api_id             Int  @unique
+  playing            Boolean @default(false)
 
   favorite_Movies    Favorite_Movie[]
   review             Review[]
