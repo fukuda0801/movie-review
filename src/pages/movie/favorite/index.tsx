@@ -1,5 +1,5 @@
 import ResultMovieGroup from "@/components/movie/ResultMovieGroup";
-import ResultPagination from "@/components/movie/ResultPaging";
+import ResultPagination from "@/components/movie/ResultPagination";
 import ResultTitle from "@/components/movie/ResultTitle";
 import { GetServerSideProps } from "next";
 
@@ -41,7 +41,7 @@ const Index = ({ movieDetails, currentPage, totalPage }: FavoriteMovieProps) => 
     <main>
       <ResultTitle title="お気に入り映画一覧" currentPage={currentPage} totalPage={totalPage} />
       <ResultMovieGroup movieDetails={movieDetails} />
-      <ResultPagination currentPage={currentPage} totalPage={totalPage} />
+      <ResultPagination currentPage={currentPage} totalPage={totalPage} url="favorite" />
     </main>
   );
 };
