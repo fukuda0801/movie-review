@@ -1,4 +1,4 @@
-import styles from "@/styles/components/movie/ResultMovieDetail.module.css";
+import React from "react";
 
 type MovieProps = {
   movie: {
@@ -6,7 +6,7 @@ type MovieProps = {
     title: string;
     poster_path: string;
     release_date: string;
-    _count: {
+    _count?: {
       favorite_Movies: number;
     };
   };
@@ -24,7 +24,11 @@ const ResultMovieDetails = ({ movie }: MovieProps) => {
         />
         <h3>{movie.title}</h3>
         <p>公開日: {movie.release_date}</p>
-        <p>お気に入り登録者数: {movie._count.favorite_Movies}</p>
+        {movie._count?.favorite_Movies ? (
+          <p>お気に入り登録者数: {movie._count?.favorite_Movies}</p>
+        ) : (
+          <></>
+        )}
       </li>
     </div>
   );
