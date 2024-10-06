@@ -8,8 +8,9 @@
 }
 
 .primary {
-  background-color: #ff9933;
+  background-color: rgb(253, 171, 19);
   color: white;
+  font-weight: bold;
 }
 
 .primary:hover {
