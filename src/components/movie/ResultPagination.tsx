@@ -3,9 +3,10 @@ import Link from "next/link";
 interface PaginationProps {
   currentPage: number;
   totalPage: number;
+  url: string;
 }
 
-const ResultPagination = ({ currentPage, totalPage }: PaginationProps) => {
+const ResultPagination = ({ currentPage, totalPage, url }: PaginationProps) => {
   // ページ番号を配列に格納
   const pageNumbers = [];
 
@@ -50,7 +51,7 @@ const ResultPagination = ({ currentPage, totalPage }: PaginationProps) => {
         {pageNumbers.map((page, index) => (
           <li key={index}>
             {typeof page === "number" ? (
-              <Link href={`/movie/favorite?page=${page}`}>
+              <Link href={`/movie/${url}?page=${page}`}>
                 <p>{page}</p>
               </Link>
             ) : (
