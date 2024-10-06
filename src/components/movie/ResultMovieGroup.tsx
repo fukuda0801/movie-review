@@ -6,7 +6,7 @@ type MovieProps = {
   title: string;
   poster_path: string;
   release_date: string;
-  _count: {
+  _count?: {
     favorite_Movies: number;
   };
 };
