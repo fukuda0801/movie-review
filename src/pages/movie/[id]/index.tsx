@@ -35,7 +35,7 @@ const Index = ({ movieDetail, firstTwoCast }: any) => {
 
   return (
     <main>
-      <SearchForm />
+      <SearchForm title="フリーワードで探す" />
       <MovieDetail movieDetail={movie} />
     </main>
   );
