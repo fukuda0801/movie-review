@@ -1,4 +1,5 @@
 import Link from "next/link";
+import styles from "@/styles/components/movie/ResultPaging.module.css";
 
 interface PaginationProps {
   currentPage: number;
@@ -46,7 +47,7 @@ const ResultPagination = ({ currentPage, totalPage, url }: PaginationProps) => {
   }
 
   return (
-    <div>
+    <div className={styles.paginationGroup}>
       <ul>
         {pageNumbers.map((page, index) => (
           <li key={index}>

@@ -39,8 +39,16 @@ const Home = ({ genres, popularMovies, playingMovies }: any) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SearchForm title="フリーワードで探す" />
-      <SliderMovies movies={popularMovies.popularMovies} title="人気の映画から探す" />
-      <SliderMovies movies={playingMovies.playingMovies} title="上映中の映画から探す" />
+      <SliderMovies
+        movies={popularMovies.popularMovies}
+        title="人気の映画から探す>"
+        url="favorite"
+      />
+      <SliderMovies
+        movies={playingMovies.playingMovies}
+        title="上映中の映画から探す>"
+        url="playing"
+      />
       <GenreMovie genres={genres} />
     </>
   );

@@ -3,8 +3,9 @@ import Image from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Link from "next/link";
 
-const SliderMovies = ({ movies, title }: any) => {
+const SliderMovies = ({ movies, title, url }: any) => {
   const settings = {
     dots: true, // ページネーションのドットを表示
     infinite: true, // 無限ループ
@@ -22,22 +23,26 @@ const SliderMovies = ({ movies, title }: any) => {
 
   return (
     <div className={styles.sliderMovieContent}>
-      <h2>{title}</h2>
+      <Link href={`/movie/${url}`}>
+        <h2>{title}</h2>
+      </Link>
       <div className={styles.sliderMovieGroup}>
         <Slider {...settings}>
           {movies.map((movie: any) => {
             return (
-              <div key={movie.id} className={styles.sliderArea}>
-                <Image
-                  src={`https://image.tmdb.org/t/p/w300_and_h450_bestv2/${movie.poster_path}`}
-                  alt="映画ポスター"
-                  width={140}
-                  height={210}
-                  priority
-                  className={styles.sliderMovieImg}
-                />
-                <p>{movie.title}</p>
-              </div>
+              <Link href={`/movie/${movie.id}`} key={movie.id}>
+                <div key={movie.id} className={styles.sliderArea}>
+                  <Image
+                    src={`https://image.tmdb.org/t/p/w300_and_h450_bestv2/${movie.poster_path}`}
+                    alt="映画ポスター"
+                    width={140}
+                    height={210}
+                    priority
+                    className={styles.sliderMovieImg}
+                  />
+                  <p>{movie.title}</p>
+                </div>
+              </Link>
             );
           })}
         </Slider>
