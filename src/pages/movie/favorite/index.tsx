@@ -5,6 +5,7 @@ import { GetServerSideProps } from "next";
 
 type FavoriteMovie = {
   id: number;
+  api_id: number;
   title: string;
   overview: string;
   poster_path: string;
