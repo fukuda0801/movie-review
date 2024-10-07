@@ -1,0 +1,16 @@
+.resultTitleGroup {
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.resultTitleGroup > h1 {
+  text-align: center;
+  font-size: 1rem;
+  background-color: #e4e4e4;
+  color: black;
+  padding: 0.7rem;
+}
+
+.resultTitleGroup > h2 {
+  font-size: 0.8rem;
+}

@@ -8,7 +8,7 @@ type ResultTitleProps = {
 
 const ResultTitle = ({ title, currentPage, totalPage }: ResultTitleProps) => {
   return (
-    <div>
+    <div className={styles.resultTitleGroup}>
       <h1>{title}</h1>
       <h2>
         {currentPage} / {totalPage} ページ
