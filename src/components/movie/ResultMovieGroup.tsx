@@ -3,6 +3,7 @@ import ResultMovieDetails from "./ResultMovieDetails";
 
 type MovieProps = {
   id: number;
+  api_id: number;
   title: string;
   poster_path: string;
   release_date: string;
@@ -17,7 +18,7 @@ type MovieDetailsProps = {
 
 const ResultMovieGroup = ({ movieDetails }: MovieDetailsProps) => {
   return (
-    <div>
+    <div className={styles.resultMovieGroupContent}>
       <ul>
         {movieDetails.map((movie: MovieProps) => {
           return <ResultMovieDetails movie={movie} key={movie.id} />;
