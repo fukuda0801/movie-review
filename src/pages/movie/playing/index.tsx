@@ -1,6 +1,7 @@
 import ResultMovieGroup from "@/components/movie/ResultMovieGroup";
 import ResultPagination from "@/components/movie/ResultPagination";
 import ResultTitle from "@/components/movie/ResultTitle";
+import SearchForm from "@/components/movie/SearchForm";
 import styles from "@/styles/pages/movie/playing/index.module.css";
 import { GetServerSideProps } from "next";
 
@@ -36,7 +37,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 const Index = ({ movieDetails, currentPage, totalPage }: PlayingMovieProps) => {
   return (
-    <main>
+    <main className={styles.resultPlayingContent}>
       <ResultTitle title="上映中映画一覧" currentPage={currentPage} totalPage={totalPage} />
       <ResultMovieGroup movieDetails={movieDetails} />
       <ResultPagination currentPage={currentPage} totalPage={totalPage} url="playing" />
