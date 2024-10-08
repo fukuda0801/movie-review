@@ -80,7 +80,7 @@ const Edit = () => {
           label="年齢"
           type="number"
           register={register("age", {
-            setValueAs: (value) => (value === "" ? undefined : parseInt(value, 10)),
+            setValueAs: (value) => (value === "" ? undefined : Number.parseInt(value, 10)),
           })}
           errorMessage={errors.age?.message}
         />
