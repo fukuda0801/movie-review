@@ -1,0 +1,11 @@
+.paginationGroup {
+  margin: 1rem auto;
+}
+
+.paginationGroup > ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}

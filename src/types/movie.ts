@@ -15,3 +15,19 @@ export type GenreList = {
 export type SearchFormProps = {
   title?: string;
 };
+
+// あいまい検索結果
+type SearchMovieProps = {
+  id: number;
+  api_id: number;
+  playing: boolean;
+  title: string;
+  release_date: string;
+  poster_path: string;
+};
+
+export type SearchMoviesProps = {
+  movies: SearchMovieProps[];
+  totalPage: number;
+  currentPage: number;
+};
