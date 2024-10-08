@@ -1,4 +1,4 @@
-import { Genre, GenreList } from "@/types/movie";
+import type { Genre, GenreList } from "@/types/movie";
 import styles from "@/styles/components/movie/GenreMovie.module.css";
 
 const GenreMovie = ({ genres }: GenreList) => {

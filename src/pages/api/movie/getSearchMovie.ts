@@ -1,6 +1,6 @@
 // pages/api/getSearchMovie.js
 import prisma from "@/lib/prisma";
-import { NextApiRequest, NextApiResponse } from "next";
+import type { NextApiRequest, NextApiResponse } from "next";
 
 // 1ページあたりの映画表示件数
 const MOVIE_PER_PAGE = 12;
@@ -8,7 +8,7 @@ const MOVIE_API = process.env.MOVIE_API;
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   // クエリパラメータよりページ番号取得
-  const currentPage = parseInt(req.query.page as string, 12) || 1;
+  const currentPage = Number.parseInt(req.query.page as string, 12) || 1;
 
   if (req.method === "GET") {
     const search = req.query.search as string;

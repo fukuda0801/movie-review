@@ -1,4 +1,4 @@
-import { UseFormRegisterReturn } from "react-hook-form";
+import type { UseFormRegisterReturn } from "react-hook-form";
 import styles from "../../styles/components/user/InputText.module.css";
 
 type InputProps = {

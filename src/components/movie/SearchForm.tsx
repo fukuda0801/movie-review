@@ -1,7 +1,7 @@
 import styles from "@/styles/pages/movie/[id]/index.module.css";
 import Button from "../utils/Button";
-import { SearchFormProps } from "@/types/movie";
-import { FormEvent, useState } from "react";
+import type { SearchFormProps } from "@/types/movie";
+import { type FormEvent, useState } from "react";
 import { useRouter } from "next/router";
 
 const SearchForm = ({ title }: SearchFormProps) => {

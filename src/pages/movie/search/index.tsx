@@ -1,7 +1,7 @@
 import ResultMovieGroup from "@/components/movie/ResultMovieGroup";
 import ResultTitle from "@/components/movie/ResultTitle";
-import { SearchMoviesProps } from "@/types/movie";
-import { GetServerSideProps } from "next";
+import type { SearchMoviesProps } from "@/types/movie";
+import type { GetServerSideProps } from "next";
 import styles from "@/styles/pages/movie/search/index.module.css";
 import ResultPagination from "@/components/movie/ResultPagination";
 

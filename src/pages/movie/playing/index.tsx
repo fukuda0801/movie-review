@@ -3,7 +3,7 @@ import ResultPagination from "@/components/movie/ResultPagination";
 import ResultTitle from "@/components/movie/ResultTitle";
 import SearchForm from "@/components/movie/SearchForm";
 import styles from "@/styles/pages/movie/playing/index.module.css";
-import { GetServerSideProps } from "next";
+import type { GetServerSideProps } from "next";
 
 type PlayingMovie = {
   id: number;
@@ -21,7 +21,7 @@ type PlayingMovieProps = {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const page = parseInt(context.query.page as string, 10) || 1;
+  const page = Number.parseInt(context.query.page as string, 10) || 1;
 
   const res = await fetch(`http://localhost:3000/api/movie/resultPlayingMovie?page=${page}`);
   const data = await res.json();
