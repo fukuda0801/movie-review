@@ -14,4 +14,4 @@ module.exports = {
   htmlWhitespaceSensitivity: "css", // HTMLファイルのグローバルな空白の感度を指定
   endOfLine: "lf", // 改行の文字コードを指定。lf: Linux、MacOS、gitリポジトリで一般的な、ラインフィード(\n)のみ
   embeddedLanguageFormatting: "off", // Prettierがファイルに埋め込まれた引用コードをフォーマットするかどうかを制御
-}
+};
