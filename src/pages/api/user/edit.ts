@@ -48,9 +48,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           gender: gender,
         },
       });
-      return res
-        .status(200)
-        .json({ message: "ユーザー情報の更新が完了しました。", user: updateUser });
+      return res.status(200).json({
+        message: "ユーザー情報の更新が完了しました。",
+        user: updateUser,
+      });
     } catch (err) {
       console.error(err);
       return res.status(500).json({ message: "サーバーエラーです。" });
