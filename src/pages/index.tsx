@@ -10,13 +10,13 @@ export const getServerSideProps = async () => {
 
   // APIを通してDBより人気映画を取得（6件のみ）
   const popularMovieResponse = await fetch(
-    `http://localhost:3000/api/movie/getFavoriteMovie?limit=6`
+    `http://localhost:3000/api/movie/getFavoriteMovie?limit=6`,
   );
   const popularMovies = await popularMovieResponse.json();
 
   // APIを通してDBより上映中映画（としているもの）を取得(6件のみ)
   const playingMovieResponse = await fetch(
-    `http://localhost:3000/api/movie/getPlayingMovie?limit=6`
+    `http://localhost:3000/api/movie/getPlayingMovie?limit=6`,
   );
   const playingMovies = await playingMovieResponse.json();
 

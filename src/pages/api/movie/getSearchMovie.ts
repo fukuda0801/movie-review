@@ -1,6 +1,6 @@
 // pages/api/getSearchMovie.js
 import prisma from "@/lib/prisma";
-import { NextApiRequest, NextApiResponse } from "next";
+import type { NextApiRequest, NextApiResponse } from "next";
 
 // 1ページあたりの映画表示件数
 const MOVIE_PER_PAGE = 12;
@@ -8,7 +8,7 @@ const MOVIE_API = process.env.MOVIE_API;
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   // クエリパラメータよりページ番号取得
-  const currentPage = parseInt(req.query.page as string, 12) || 1;
+  const currentPage = Number.parseInt(req.query.page as string, 12) || 1;
 
   if (req.method === "GET") {
     const search = req.query.search as string;
@@ -16,7 +16,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       // TMDB APIにリクエストを送信し、映画情報を取得
       const movieResponse = await fetch(
-        `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(search)}&api_key=${MOVIE_API}&language=ja-JP`
+        `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(search)}&api_key=${MOVIE_API}&language=ja-JP`,
       );
       const moviesData = await movieResponse.json();
 
@@ -38,7 +38,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       // 条件に合う映画情報を取得
       const resultMovies = matchedMovies.map((movie) => {
         const foundMovie = moviesData.results.find(
-          (movieData: any) => movieData.id === movie.api_id
+          (movieData: any) => movieData.id === movie.api_id,
         );
         return {
           ...movie,

@@ -1,7 +1,7 @@
 import ResultMovieGroup from "@/components/movie/ResultMovieGroup";
 import ResultTitle from "@/components/movie/ResultTitle";
-import { SearchMoviesProps } from "@/types/movie";
-import { GetServerSideProps } from "next";
+import type { SearchMoviesProps } from "@/types/movie";
+import type { GetServerSideProps } from "next";
 import styles from "@/styles/pages/movie/search/index.module.css";
 import ResultPagination from "@/components/movie/ResultPagination";
 
@@ -10,7 +10,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const page = Number(context.query.page as string) || 1;
 
   const response = await fetch(
-    `http://localhost:3000/api/movie/getSearchMovie?search=${search}&page=${page}`
+    `http://localhost:3000/api/movie/getSearchMovie?search=${search}&page=${page}`,
   );
   if (!response.ok) {
     return { notFound: true };
@@ -18,7 +18,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const data = await response.json();
 
   return {
-    props: { movies: data.resultMovies, currentPage: data.currentPage, totalPage: data.totalPage },
+    props: {
+      movies: data.resultMovies,
+      currentPage: data.currentPage,
+      totalPage: data.totalPage,
+    },
   };
 };
 

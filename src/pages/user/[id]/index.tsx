@@ -2,7 +2,7 @@ import UserInfo from "@/components/user/UserInfo";
 import styles from "../../../styles/pages/user/[id]/index.module.css";
 import Title from "@/components/user/Title";
 import Button from "@/components/utils/Button";
-import { GetServerSideProps } from "next";
+import type { GetServerSideProps } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 

@@ -1,5 +1,5 @@
 import prisma from "@/lib/prisma";
-import { NextApiRequest, NextApiResponse } from "next";
+import type { NextApiRequest, NextApiResponse } from "next";
 
 // １ページあたりの映画表示件数
 const MOVIE_PER_PAGE = 12;
@@ -7,7 +7,7 @@ const MOVIE_API = process.env.MOVIE_API;
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   // クエリパラメータよりページ番号取得
-  const currentPage = parseInt(req.query.page as string, 12) || 1;
+  const currentPage = Number.parseInt(req.query.page as string, 12) || 1;
 
   if (req.method === "GET") {
     try {
@@ -31,7 +31,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       const movieDetails = await Promise.all(
         favoriteMovies.map(async (movie) => {
           const movieResponse = await fetch(
-            `https://api.themoviedb.org/3/movie/${movie.api_id}?api_key=${MOVIE_API}&language=ja`
+            `https://api.themoviedb.org/3/movie/${movie.api_id}?api_key=${MOVIE_API}&language=ja`,
           );
           const movieData = await movieResponse.json();
 
@@ -41,7 +41,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             poster_path: movieData.poster_path,
             release_date: movieData.release_date,
           };
-        })
+        }),
       );
 
       // お気に入り登録されている映画数を取得

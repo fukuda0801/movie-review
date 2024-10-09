@@ -1,5 +1,5 @@
 import prisma from "@/lib/prisma";
-import { NextApiRequest, NextApiResponse } from "next";
+import type { NextApiRequest, NextApiResponse } from "next";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "GET") {
@@ -25,7 +25,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       const popularMovies = await Promise.all(
         popularMovieIds.map(async (movie: any) => {
           const movieResponse = await fetch(
-            `https://api.themoviedb.org/3/movie/${movie.api_id}?api_key=586eeda24edab92c73392fb73d4d14ce&language=ja-JP`
+            `https://api.themoviedb.org/3/movie/${movie.api_id}?api_key=586eeda24edab92c73392fb73d4d14ce&language=ja-JP`,
           );
           const movieData = await movieResponse.json();
 
@@ -33,7 +33,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             ...movieData,
             count: movie._count.api_id,
           };
-        })
+        }),
       );
 
       if (!popularMovies) {

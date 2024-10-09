@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import type { NextApiRequest, NextApiResponse } from "next";
 import jwt from "jsonwebtoken";
 import prisma from "@/lib/prisma";
 
@@ -38,9 +38,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         return res.status(404).json({ message: "ユーザーが見つかりません" });
       }
       // データベースからログインユーザーの情報が見つかった場合200を返す
-      return res
-        .status(200)
-        .json({ message: "ログインユーザーが見つかりました。", user: loginUser });
+      return res.status(200).json({
+        message: "ログインユーザーが見つかりました。",
+        user: loginUser,
+      });
     } catch (err: any) {
       return res.status(500).json({ message: "サーバーエラー" });
     }
