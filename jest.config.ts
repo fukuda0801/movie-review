@@ -6,6 +6,7 @@ const createJestConfig = nextJest({
 });
 
 const config: Config = {
+  collectCoverage: true,
   coverageProvider: "v8",
   testEnvironment: "jest-environment-jsdom",
   // Add more setup options before each test is run
