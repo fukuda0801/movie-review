@@ -8,41 +8,28 @@ interface PaginationProps {
 }
 
 const ResultPagination = ({ currentPage, totalPage, url }: PaginationProps) => {
-  // ページ番号を配列に格納
   const pageNumbers = [];
 
-  // 一度に表示するページ番号の最大数を設定
-  const MAX_PAGE_NUMBER = 5;
-
-  // 現在のページを中心に、前後にどのくらいのページ番号を表示するか設定
-  const delta = Math.floor(MAX_PAGE_NUMBER / 2);
-
   // 最初のページ
-  if (currentPage - delta > 1) {
-    pageNumbers.push(1);
-  }
+  pageNumbers.push(1);
 
-  // 省略表示
-  if (currentPage - delta > 2) {
+  // 必要であれば「...」を追加（最初のページと、現在のページの-1が離れている場合）
+  if (currentPage > 3) {
     pageNumbers.push("...");
   }
 
-  // 現在ページの前後ページ番号
-  for (
-    let i = Math.max(1, currentPage - delta);
-    i <= Math.min(totalPage, currentPage + delta);
-    i++
-  ) {
+  // 現在ページの前後1ページを表示
+  for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPage - 1, currentPage + 1); i++) {
     pageNumbers.push(i);
   }
 
-  // 省略表示
-  if (currentPage + delta < totalPage - 1) {
+  // 必要であれば「...」を追加（現在のページ+1と最後のページが離れている場合）
+  if (currentPage < totalPage - 2) {
     pageNumbers.push("...");
   }
 
   // 最後のページ
-  if (currentPage + delta < totalPage) {
+  if (totalPage > 1) {
     pageNumbers.push(totalPage);
   }
 
