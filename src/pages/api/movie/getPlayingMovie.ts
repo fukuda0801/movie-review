@@ -22,10 +22,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       const playingMovies = await Promise.all(
         playingMovieIds.map(async (movie: any) => {
           const movieResponse = await fetch(
-            `https://api.themoviedb.org/3/movie/${movie.api_id}?api_key=586eeda24edab92c73392fb73d4d14ce&language=ja-JP`
+            `https://api.themoviedb.org/3/movie/${movie.api_id}?api_key=586eeda24edab92c73392fb73d4d14ce&language=ja-JP`,
           );
           return await movieResponse.json();
-        })
+        }),
       );
 
       if (!playingMovies) {

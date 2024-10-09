@@ -39,7 +39,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         process.env.JWT_SECRET_KEY!,
         {
           expiresIn: "1d",
-        }
+        },
       );
 
       // レスポンスのヘッダーに情報追加（トークンなど）
@@ -51,7 +51,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           sameSite: "strict",
           path: "/",
           httpOnly: true,
-        })
+        }),
       );
 
       return res.status(200).json({ message: "ログインに成功しました。" });

@@ -16,7 +16,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       // TMDB APIにリクエストを送信し、映画情報を取得
       const movieResponse = await fetch(
-        `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(search)}&api_key=${MOVIE_API}&language=ja-JP`
+        `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(search)}&api_key=${MOVIE_API}&language=ja-JP`,
       );
       const moviesData = await movieResponse.json();
 
@@ -38,7 +38,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       // 条件に合う映画情報を取得
       const resultMovies = matchedMovies.map((movie) => {
         const foundMovie = moviesData.results.find(
-          (movieData: any) => movieData.id === movie.api_id
+          (movieData: any) => movieData.id === movie.api_id,
         );
         return {
           ...movie,

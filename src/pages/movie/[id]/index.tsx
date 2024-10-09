@@ -4,11 +4,11 @@ import type { GetServerSideProps } from "next";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const movieResponse = await fetch(
-    `https://api.themoviedb.org/3/movie/${params?.id}?api_key=586eeda24edab92c73392fb73d4d14ce&language=ja-JP`
+    `https://api.themoviedb.org/3/movie/${params?.id}?api_key=586eeda24edab92c73392fb73d4d14ce&language=ja-JP`,
   );
   const movieDetail = await movieResponse.json();
   const castResponse = await fetch(
-    `https://api.themoviedb.org/3/movie/${params?.id}/credits?api_key=586eeda24edab92c73392fb73d4d14ce&language=ja-JP`
+    `https://api.themoviedb.org/3/movie/${params?.id}/credits?api_key=586eeda24edab92c73392fb73d4d14ce&language=ja-JP`,
   );
   const movieCast = await castResponse.json();
   const firstTwoCast = movieCast.cast.slice(0, 2);
