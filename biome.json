@@ -17,17 +17,22 @@
     "ignore": [".next", "node_modules"],
     "indentWidth": 2,
     "indentStyle": "space",
-    "lineWidth": 80
+    "lineWidth": 100
   },
   "javascript": {
     "parser": {
       "unsafeParameterDecoratorsEnabled": true
     },
     "formatter": {
-      "quoteStyle": "single",
-      "jsxQuoteStyle": "single",
+      "quoteStyle": "double",
+      "jsxQuoteStyle": "double",
       "semicolons": "always",
-      "arrowParentheses": "asNeeded"
+      "arrowParentheses": "always",
+      "trailingCommas": "all",
+      "indentWidth": 2,
+      "indentStyle": "space",
+      "lineWidth": 100,
+      "quoteProperties": "asNeeded"
     }
   },
   "json": {
@@ -36,7 +41,7 @@
       "enabled": true,
       "indentStyle": "space",
       "indentWidth": 2,
-      "lineWidth": 80
+      "lineWidth": 100
     }
   }
 }
