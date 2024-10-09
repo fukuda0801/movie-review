@@ -8,7 +8,9 @@ export const registerSchema = z
       .min(2, "ユーザー名は２文字以上にしてください")
       .max(20, "ユーザー名は２０文字以下にしてください"),
     email: z.string().email("無効なメールアドレスの形式です"),
-    gender: z.enum(["男性", "女性", "その他"], { required_error: "性別は必須項目です" }),
+    gender: z.enum(["男性", "女性", "その他"], {
+      required_error: "性別は必須項目です",
+    }),
     age: z
       .number({ required_error: "年齢は必須項目です" })
       .min(0, "0歳以上を指定してください")
@@ -42,7 +44,9 @@ export const editSchema = z.object({
     .string({ required_error: "ユーザー名は必須項目です" })
     .min(2, "ユーザー名は2文字以上にしてください")
     .max(20, "ユーザー名は20文字以下にしてください"),
-  gender: z.enum(["男性", "女性", "その他"], { required_error: "性別は必須項目です" }),
+  gender: z.enum(["男性", "女性", "その他"], {
+    required_error: "性別は必須項目です",
+  }),
   age: z
     .number({ required_error: "年齢は必須項目です" })
     .min(0, "０歳以上を指定してください")
